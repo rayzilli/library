@@ -9,9 +9,20 @@
 </head>
 <body>
 <h1>Library</h1>
-    <div id="container">
+      <div id="main">
+        <form id="submit-form">
+            <h3>Add new book</h3>
+            <input type="text" id="title" placeholder="title">
+            <input type="text" id="author" placeholder="author">
+            <input type="text" id="pages" placeholder="pages">
+            <label for="read">Have you read this book?</label>
+            <input type="checkbox" id="read">
+            <button type="submit">Submit</button>
+        </form>
+        <div id="book-container"></div>
+      </div>
+  
 
-    </div>
     <script src="./app.js"></script>
 </body>
 
