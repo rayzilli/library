@@ -21,8 +21,20 @@ function addBookToLibrary(newBook) {
     ul.appendChild(author).innerText = newBook.author;
     const pages = document.createElement('li');
     ul.appendChild(pages).innerText = newBook.pages;
-    const read = document.createElement('li');
-    ul.appendChild(read).innerText = newBook.read;
+    //add read book button that toggles 
+    const readButton = document.createElement('button');
+    readButton.className = 'read-button';
+    readButton.setAttribute('data-read', newBook.read); // set initial read status
+    readButton.innerText = newBook.read;
+    ul.appendChild(readButton);
+
+    //event handler to toggle read/not-read button
+    readButton.addEventListener('click', e => {
+        const readStatus = readButton.getAttribute('data-read');
+        readButton.setAttribute('data-read', readStatus === 'read' ? 'not-read' : 'read');
+        readButton.innerText = readStatus === 'read' ? 'not-read' : 'read';
+    });
+
     //remove button 
     //get button element and store as remove - give it book title name and label remove
     const remove = document.createElement('button');
@@ -32,15 +44,11 @@ function addBookToLibrary(newBook) {
     remove.addEventListener('click', function() {
       removeBook(newBook.title);
       ul.remove();
+
     });
     ul.appendChild(remove);
-    //add button that toggles read/not-read
-    const readButton = document.createElement('button');
-    readButton.id = 'read-button';
-    readButton.innerText = 'read';
-    ul.appendChild(readButton);
-
 }
+
 
 
 
@@ -55,7 +63,6 @@ function posting(e){
     const author = form.author.value;
     const pages = form.pages.value;
     const read = form.read.checked ? 'read' : 'not read';
-    console.log('read');
     // const read = form.read.checked;
     console.log(title, author, pages, read);
     let newBook = new Book(title, author, pages, read)
