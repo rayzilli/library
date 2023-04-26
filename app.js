@@ -1,5 +1,5 @@
 
-//initialize array that holds books - objects created by Book constructor
+//initialize array that holds books - objects that end up here created by Book constructor
 let myLibrary = [];
 
 function Book(title, author, pages, read) {
@@ -12,7 +12,6 @@ function Book(title, author, pages, read) {
 
 
 //add new book to library - function is called to post books to webpage
-//button is created that calls for removal of node 
 function addBookToLibrary(newBook) {
     const ul = document.createElement('ul');
     document.getElementById('book-container').appendChild(ul);
@@ -35,16 +34,13 @@ function addBookToLibrary(newBook) {
       ul.remove();
     });
     ul.appendChild(remove);
+    //add button that toggles read/not-read
+    const readButton = document.createElement('button');
+    readButton.id = 'read-button';
+    readButton.innerText = 'read';
+    ul.appendChild(readButton);
+
 }
-
-
-//add books to myLibrary array
-let newBook = new Book('Moby Dick', 'melville', 100, 'read');
-myLibrary.push(newBook);
- newBook = new Book('war and peace', 'tolstoy', 1000, 'read');
- myLibrary.push(newBook);
-newBook = new Book('Demonic Ground', 'McKittrick', 100, 'read');
-myLibrary.push(newBook);
 
 
 
@@ -58,19 +54,21 @@ function posting(e){
     const title = form.title.value;
     const author = form.author.value;
     const pages = form.pages.value;
-    const read = form.read.value;
+    const read = form.read.checked ? 'read' : 'not read';
+    console.log('read');
+    // const read = form.read.checked;
     console.log(title, author, pages, read);
     let newBook = new Book(title, author, pages, read)
     myLibrary.push(newBook);
     form.reset();
-    document.getElementById('book-container').innerText = '';
+    document.getElementById('book-container').innerText = ''; //clear book container
     for (book in myLibrary){
         addBookToLibrary(myLibrary[book]);
     }
 }
 
 // remove book from list
-//iterate over children of UL and if id of button marches title then removeChild(book)
+//iterate over children of ul and if id of button marches title then removeChild(book)
 function removeBook(title) {
     myLibrary = myLibrary.filter(item =>item.title != title);
     const bookList = document.getElementById('book-container');
@@ -83,7 +81,17 @@ function removeBook(title) {
     }
 }
 
-// display array that is populated with books created with function not form
+//add books to myLibrary array
+let newBook = new Book('Moby Dick', 'melville', 100, 'read');
+myLibrary.push(newBook);
+ newBook = new Book('war and peace', 'tolstoy', 1000, 'read');
+ myLibrary.push(newBook);
+newBook = new Book('Demonic Ground', 'McKittrick', 100, 'read');
+myLibrary.push(newBook);
+
+
+
+// display array that is populated with book from just above 
 for (book in myLibrary){
     addBookToLibrary(myLibrary[book]);
 }

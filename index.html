@@ -12,11 +12,11 @@
       <div id="main">
         <form id="submit-form">
             <h3>Add new book</h3>
-            <input type="text" id="title" placeholder="title">
-            <input type="text" id="author" placeholder="author">
-            <input type="text" id="pages" placeholder="pages">
+            <input type="text" id="title" placeholder="title" required>
+            <input type="text" id="author" placeholder="author" required>
+            <input type="number" id="pages" placeholder="pages" required>
             <label for="read">Have you read this book?</label>
-            <input type="checkbox" id="read">
+            <input type="checkbox" id="read" >
             <button type="submit">Submit</button>
         </form>
         <div id="book-container"></div>
