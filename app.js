@@ -27,7 +27,6 @@ function addBookToLibrary(newBook) {
     readButton.setAttribute('data-read', newBook.read); // set initial read status
     readButton.innerText = newBook.read;
     ul.appendChild(readButton);
-
     //event handler to toggle read/not-read button
     readButton.addEventListener('click', e => {
         const readStatus = readButton.getAttribute('data-read');
@@ -63,7 +62,7 @@ function posting(e){
     const title = form.title.value;
     const author = form.author.value;
     const pages = form.pages.value;
-    const read = form.read.checked ? 'read' : 'not read';
+    const read = form.read.checked ? 'read' : 'not-read';
     // const read = form.read.checked;
     console.log(title, author, pages, read);
     let newBook = new Book(title, author, pages, read)
