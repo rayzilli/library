@@ -33,6 +33,7 @@ function addBookToLibrary(newBook) {
         const readStatus = readButton.getAttribute('data-read');
         readButton.setAttribute('data-read', readStatus === 'read' ? 'not-read' : 'read');
         readButton.innerText = readStatus === 'read' ? 'not-read' : 'read';
+        
     });
 
     //remove button 
@@ -72,6 +73,10 @@ function posting(e){
     for (book in myLibrary){
         addBookToLibrary(myLibrary[book]);
     }
+    const buttonReturns = document.getElementById('add-book');
+    buttonReturns.style.display = 'flex';
+    const formDisappear = document.getElementById('submit-form');
+    formDisappear.style.display = 'none'; 
 }
 
 // remove book from list
@@ -102,3 +107,18 @@ myLibrary.push(newBook);
 for (book in myLibrary){
     addBookToLibrary(myLibrary[book]);
 }
+
+const buttonAdd = document.getElementById('add-book');
+buttonAdd.addEventListener('click', (e) =>{
+    form.style.display = 'flex'
+    buttonAdd.style.display = 'none';
+});
+
+const closeForm = document.getElementById('close-button');
+closeForm.addEventListener('click',()=>{
+    form.style.display = 'none';
+    const buttonReturns = document.getElementById('add-book');
+    buttonReturns.style.display = 'flex';
+}
+)
+
