@@ -2,13 +2,16 @@
 //initialize array that holds books - objects that end up here created by Book constructor
 let myLibrary = [];
 
-function Book(title, author, pages, read) {
-    //the constructor
-    this.title = title 
-    this.author = author
-    this.pages = pages 
-    this.read = read  
+class Book {
+    constructor(title, author, pages, read) {
+        //the constructor
+        this.title = title 
+        this.author = author
+        this.pages = pages 
+        this.read = read  
+    }
 }
+
 
 
 //add new book to library - function is called to post books to webpage
